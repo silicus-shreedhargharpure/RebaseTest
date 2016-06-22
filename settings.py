@@ -1,5 +1,4 @@
 import os
-
 from copy import deepcopy
 from postal import Postal
 from postal.configuration_base import base_postal_configuration
@@ -35,6 +34,23 @@ ups_credentials = {
     'shipper_number': 'X5925Y',
     'auto_time_in_transit': False,
     'test': True,
+}
+# CELERY STUFF
+BROKER_URL = 'amqp://guest:guest@localhost//'
+CELERY_RESULT_BACKEND = 'amqp://guest:guest@localhost//'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Oslo'
+CELERY_ALWAYS_EAGER = True
+CELERY_ENABLE_UTC = True
+CELERY_INTERVAL_TIME_IN_HOUR = 24
+CELERYBEAT_SCHEDULE = {
+    'add-daily_at_midnight': {
+        'task': 'tasks.add',
+        'schedule': crontab(hour=0, minute=0), ## Execute daily at midnight.
+        'args': (16, 16)
+    },
 }
 
 # Some arguments have to be passed to the USGM carrier this way to avoid
