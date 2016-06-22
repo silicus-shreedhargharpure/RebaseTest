@@ -20,15 +20,6 @@ fedex_credentials = {
     'meter_number': 118592078
 }
 
-dhl_credentials = {
-    'account_number': 0,
-    'site_id': '',
-    'password': '',
-    'test_mode': True,
-    'region_code': 'AM',
-    'company_name': 'US Global Mail',
-}
-
 usps_credentials = {
     'account_id': 2505571,
     'passphrase': 'UFmr5K9RzN9v',
@@ -104,6 +95,17 @@ DATABASES = {
         'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated'
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 HIDE_TEST_BROWSER = False
