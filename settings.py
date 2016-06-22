@@ -19,13 +19,6 @@ fedex_credentials = {
     'meter_number': 118592078
 }
 
-usps_credentials = {
-    'account_id': 2505571,
-    'passphrase': 'UFmr5K9RzN9v',
-    'ipa_convert': True,
-    'requester_id': 'lxxx'
-}
-
 ups_credentials = {
     'username': 'usglobalmail',
     'password': 'Usgm6425',
